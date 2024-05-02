@@ -1,6 +1,6 @@
 const { db, Sequelize } = require('../db/config');
 
-const Card = db.define('card', {
+const Card = db.define('Card', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,

@@ -1,6 +1,6 @@
 const { db, Sequelize } = require('../db/config');
 
-const Attack = db.define('attack', {
+const Attack = db.define('Attack', {
   title: {
     type: Sequelize.STRING,
     allowNull: false,
