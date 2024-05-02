@@ -5,9 +5,17 @@ const Card = db.define('card', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  xp: {
+  mojo: {
     type: Sequelize.INTEGER,
-    allowNull: false,
+    allowNull: true,
+  },
+  stamina: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
+  imgUrl: {
+    type: Sequelize.STRING,
+    allowNull: true,
   },
 });
 

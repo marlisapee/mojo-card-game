@@ -5,16 +5,8 @@ const Deck = db.define('deck', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  mojo: {
+  xp: {
     type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  stamina: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  imgUrl: {
-    type: Sequelize.STRING,
     allowNull: true,
   },
 });
