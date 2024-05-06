@@ -1,17 +1,32 @@
 const { describe, it, expect, beforeAll, afterAll } = require('@jest/globals');
-const { Deck } = require('../models');
+const { Deck, Card } = require('../models');
 const { db } = require('../db/config');
 
 let deck;
+let card1;
+let card2;
 
 beforeAll(async () => {
   await db.sync({ force: true });
   deck = await Deck.create({
     name: 'Water Deck',
-    mojo: 100,
-    stamina: 100,
-    imgUrl: 'image-example.com',
+    xp: 500,
   });
+  card1 = await Card.create({
+    name: 'Splash',
+    mojo: 100,
+    stamina: 50,
+    imgUrl: 'fake.url',
+  });
+  card2 = await Card.create({
+    name: 'Waterfall',
+    mojo: 200,
+    stamina: 100,
+    imgUrl: 'fake.url',
+  });
+
+  await deck.setCards([card1, card2]);
+  console.log(deck);
 });
 
 afterAll(async () => await db.sync({ force: true }));
@@ -25,7 +40,11 @@ describe('Deck', () => {
     expect(deck.name).toBe('Water Deck');
   });
 
-  it('has a stamina property', async () => {
-    expect(deck).toHaveProperty('stamina');
+  it('has an xp property', async () => {
+    expect(deck).toHaveProperty('xp');
+  });
+
+  it('has a one to many association with Card', () => {
+    expect(card1).toHaveProperty('DeckId');
   });
 });
